@@ -1,0 +1,23 @@
+<h1>Movie Index Page</h1>
+
+
+<div class='movie'>
+	<% @movie_list.each do |movie| %>
+		
+		<div class='title'>
+			<p><%= movie[:movie].title %></p>
+		</div>
+
+		<div class='showings'>
+			<% movie[:showings].each do |showing| %>
+				
+					<%= link_to showing.date, showing %>
+				
+
+			<% end %>
+		</div>
+
+
+
+	<% end %>
+</div>
