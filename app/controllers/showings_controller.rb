@@ -3,11 +3,17 @@ class ShowingsController < ApplicationController
 	def show
 		@showing = Showing.find(params[:id])
 		@movie = Movie.find_by(id: @showing.movie_id)
+		@transaction = Transaction.new
 
+		@tickets_sold = 0
 
-		p '---------'
-		p @showing
-		p @movie
+		@showing.transactions.each do |transaction|
+			p '------------------'
+			p transaction.quantity
+			@tickets_sold += transaction.quantity
+
+		end
+
 	end
 
 
