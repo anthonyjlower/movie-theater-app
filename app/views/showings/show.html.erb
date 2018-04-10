@@ -14,10 +14,6 @@
 <%= form_for @transaction do |f| %>
 
 <p>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-</p>
-<p>
 	<%= f.label :email %>
 	<%= f.text_field :email %>
 </p>
@@ -27,7 +23,7 @@
 </p>
 <p>
 	<%= f.label :quantity %>
-	<%= select_tag "credit_card", options_for_select([*1..@showing.capacity - @tickets_sold], 1)%>
+	<%= select_tag :quantity, options_for_select([*1..@showing.capacity - @tickets_sold], 1)%>
 </p>
 <p>
 	Credit Card Number <input type="text" name="credit_card_number">
@@ -35,6 +31,7 @@
 <p>
 	Credit Card Expiration <input min=<%= Date.today %> type="month" name="credit_card_expiration">
 </p>
+<input type="hidden" name="id" value=<%= @showing.id %>>
 
 <p>
 	<%=f.submit%>

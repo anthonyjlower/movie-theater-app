@@ -1,17 +1,36 @@
 <h1>Movie Index Page</h1>
 
+<nav>
+	<div class='date'>
+		<%= Date.today %>
+	</div>
+	<div class='date'>
+		<%= Date.today + 1.days %>
+	</div>
+	<div class='date'>
+		<%= Date.today + 2.days %>
+	</div>
+	<div class='date'>
+		<%= Date.today + 3.days %>
+	</div>
+	<div class='date'>
+		<%= Date.today + 4.days %>
+	</div>
+	<div class='date'>
+		<%= Date.today + 5.days %>
+	</div>
+</nav>
 
 <div class='movie'>
 	<% @movie_list.each do |movie| %>
 		
 		<div class='title'>
-			<p><%= movie[:movie].title %></p>
+			<h2><%= movie[:movie].title %></h2>
 		</div>
 
 		<div class='showings'>
 			<% movie[:showings].each do |showing| %>
-					<%= link_to showing.time.strftime("%H:%M"), showing %>
-				
+				<h4 class=<%= showing.date %>><%= link_to showing.time.strftime("%H:%M"), showing %></h4>
 
 			<% end %>
 		</div>

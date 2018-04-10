@@ -11,3 +11,29 @@ Showing.create(movie_id: 1, capacity: 50, date: '2018-04-12', time: '03:00 PM')
 Showing.create(movie_id: 1, capacity: 50, date: '2018-04-12', time: '05:30 PM')
 Showing.create(movie_id: 1, capacity: 50, date: '2018-04-12', time: '08:00 PM')
 Showing.create(movie_id: 1, capacity: 50, date: '2018-04-12', time: '10:30 PM')
+
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-13', time: '03:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-13', time: '05:30 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-13', time: '08:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-13', time: '10:30 PM')
+
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-14', time: '03:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-14', time: '05:30 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-14', time: '08:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-14', time: '10:30 PM')
+
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-15', time: '03:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-15', time: '05:30 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-15', time: '08:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-15', time: '10:30 PM')
+
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-16', time: '03:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-16', time: '05:30 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-16', time: '08:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-16', time: '10:30 PM')
+
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-17', time: '03:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-17', time: '05:30 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-17', time: '08:00 PM')
+Showing.create(movie_id: 1, capacity: 50, date: '2018-04-17', time: '10:30 PM')
+

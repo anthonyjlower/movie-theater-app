@@ -5,13 +5,13 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>  
   </head>
-  <nav>
+  <header>
   	<div>
   		<%= link_to 'Home', root_path%>
   	</div>
-  </nav>
+  </header>
 
   <body>
     <%= yield %>

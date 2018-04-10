@@ -1,7 +1,9 @@
 class TransactionsController < ApplicationController
 
-	def new
-		
+	def create
+		p '------------'
+		p params
+		p '-------------'
 	end
 
 end

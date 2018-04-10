@@ -1,0 +1,22 @@
+body{
+	/*background-color: cornsilk;*/
+}
+nav{
+	display: flex;
+	border: 1px solid black;
+}
+nav div{
+	border: 1px solid black;
+	width: 20%;
+	text-align: center;
+}
+.showings{
+	display: flex;
+	flex-wrap: wrap;
+	width: 960px;
+}
+.showings h4{
+	width: 15%;
+	padding: 0 5%;
+	display: none;
+}
