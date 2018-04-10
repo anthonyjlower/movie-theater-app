@@ -30,7 +30,7 @@
 
 		<div class='showings'>
 			<% movie[:showings].each do |showing| %>
-				<h4 class=<%= showing.date %>><%= link_to showing.time.strftime("%H:%M"), showing %></h4>
+				<span class=<%= showing.date %>><%= link_to showing.time.strftime("%H:%M"), showing %></span>
 
 			<% end %>
 		</div>

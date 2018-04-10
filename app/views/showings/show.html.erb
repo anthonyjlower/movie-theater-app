@@ -1,42 +1,44 @@
-<h1>Movie Showing</h1>
+<h1><%= @movie.title %></h1>
+
+<h4>Date: <%= @showing.date %> <%= @showing.time %></h4>
+
+<% if @showing.capacity - @tickets_sold === 0 %>
+
+	<div>Sold Out!</div>
+
+<% else %>
+
+	<h3>Tickets Remaining: <%= @showing.capacity - @tickets_sold%></h3>
 
 
-<h2><%= @movie.title %></h2>
+	
+	
 
-<p><%= @showing.date %></p>
-<p><%= @showing.time %></p>
+	<%= form_for @transaction do |f| %>
 
+	<p>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</p>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :quantity %>
+		<%= select_tag :quantity, options_for_select([*1..@showing.capacity - @tickets_sold], 1)%>
+	</p>
+	<p>
+		Credit Card Number <input type="text" name="credit_card_number">
+	</p>
+	<p>
+		Credit Card Expiration <input min=<%= Date.today %> type="month" name="credit_card_expiration">
+	</p>
+	<input type="hidden" name="id" value=<%= @showing.id %>>
 
-<h3>Tickets Remaining</h3>
-<p><%= @showing.capacity - @tickets_sold%> </p>
+	<p>
+		<%=f.submit%>
+	</p>
 
-
-<%= form_for @transaction do |f| %>
-
-<p>
-	<%= f.label :email %>
-	<%= f.text_field :email %>
-</p>
-<p>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-</p>
-<p>
-	<%= f.label :quantity %>
-	<%= select_tag :quantity, options_for_select([*1..@showing.capacity - @tickets_sold], 1)%>
-</p>
-<p>
-	Credit Card Number <input type="text" name="credit_card_number">
-</p>
-<p>
-	Credit Card Expiration <input min=<%= Date.today %> type="month" name="credit_card_expiration">
-</p>
-<input type="hidden" name="id" value=<%= @showing.id %>>
-
-<p>
-	<%=f.submit%>
-</p>
-
+	<% end %>
 <% end %>
-
-

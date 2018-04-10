@@ -8,13 +8,13 @@ window.onload = function(){
 
 function selectDate(e) {
 	const day = e.currentTarget.innerText
-	const h4 = document.getElementsByTagName('h4')
+	const span = document.getElementsByTagName('span')
 	const active = document.getElementsByClassName(day)
 	console.log(day)
 	
 	
-	for (let i = 0; i < h4.length; i++) {
-		h4[i].style.display = 'none'
+	for (let i = 0; i < span.length; i++) {
+		span[i].style.display = 'none'
 	}
 
 	for (let i = 0; i < active.length; i++) {
