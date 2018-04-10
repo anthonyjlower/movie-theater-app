@@ -14,7 +14,19 @@ class MoviesController < ApplicationController
 
 	def show
 		@movie = Movie.find(params[:id])
-		@transactions = @movie.transactions
+		transactions = @movie.transactions
+		@transactions = []
+
+		transactions.each do |transaction|
+			showing = transaction.showing
+
+			resp = {
+				trans: transaction,
+				showing: showing
+			}
+			@transactions.push(resp)
+		end
+		
 	end
 
 end

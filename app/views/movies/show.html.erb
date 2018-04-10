@@ -2,11 +2,8 @@
 
 <ul>
 	<% @transactions.each do |transaction| %>
-		<li>
-			<%= transaction.email %> <%= transaction.quantity %> 
-		</li>
-
+		<%= transaction[:trans].name %>
+		<%= transaction[:showing].date %>
 
 	<% end %>
-
 </ul>
