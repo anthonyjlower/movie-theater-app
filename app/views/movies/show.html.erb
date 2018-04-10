@@ -2,7 +2,7 @@
 
 <ul>
 	<% @transactions.each do |transaction| %>
-		<%= transaction[:trans].name %>
+		<%= transaction[:trans].first_name %>
 		<%= transaction[:showing].date %>
 
 	<% end %>

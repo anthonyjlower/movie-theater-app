@@ -8,7 +8,7 @@
 
 Movie.create(title: 'Black Panther')
 Movie.create(title: 'Ready Player One')
-Movie.create(title: 'A Quite Place')
+Movie.create(title: 'A Quiet Place')
 
 # Seed showings for Movie 1
 Showing.create(movie_id: 1, capacity: 50, date: '2018-04-12', time: '12:30 PM', price: 8.50)

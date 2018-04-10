@@ -8,8 +8,6 @@ class ShowingsController < ApplicationController
 		@tickets_sold = 0
 
 		@showing.transactions.each do |transaction|
-			p '------------------'
-			p transaction.quantity
 			@tickets_sold += transaction.quantity
 
 		end
