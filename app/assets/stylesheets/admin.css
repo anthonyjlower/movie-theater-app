@@ -37,6 +37,14 @@ h3{
 	background-color: rgb(3, 68, 136);
 	color: rgb(204, 221, 232);
 }
+#sold-out{
+	color: rgb(237,106, 90);
+	margin-top: 10vw;
+	font-size: 10vw;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+}
 .title h2{
 	padding-top: 1vw;
 	padding-left: 1vw;

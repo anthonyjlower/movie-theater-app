@@ -20,6 +20,4 @@ function selectDate(e) {
 	for (let i = 0; i < active.length; i++) {
 		active[i].style.display = 'inline'
 	}
-
-
 }

@@ -1,0 +1,12 @@
+<h1><%= @movie.title %> Sales</h1>
+
+<ul>
+	<% @transactions.each do |transaction| %>
+		<li>
+			<%= transaction.email %> <%= transaction.quantity %> 
+		</li>
+
+
+	<% end %>
+
+</ul>

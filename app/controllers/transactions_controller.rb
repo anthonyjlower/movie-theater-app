@@ -25,9 +25,10 @@ class TransactionsController < ApplicationController
 
 	def show
 		@transaction = Transaction.find(params[:id])
-		p '---------------'
-		p @transaction
-		p '---------------'
+	end
+
+	def index
+		@transactions = Transaction.all
 	end
 
 end

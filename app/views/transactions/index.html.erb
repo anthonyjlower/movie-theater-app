@@ -1,0 +1,13 @@
+<h1>Transaction Log</h1>
+
+
+<ul>
+	<% @transactions.each do |transaction| %>
+		<li>
+			<%= transaction.email %> <%= transaction.quantity %> 
+		</li>
+
+
+
+	<%end %> 
+</ul>
