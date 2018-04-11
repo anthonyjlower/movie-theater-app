@@ -1,7 +1,15 @@
-<h1>Thank You <%= @transaction.email %></h1>
+<h1>Thank You For Your Purchase</h1>
 
-Your purchase of <%= @transaction.quantity %> tickets has been confirmed.
+<div id='confirm'>
+	<div>
+		Your purchase of <%= @transaction.quantity %> tickets has been confirmed.
+	</div>
 
-Your card will be charged <%= @transaction.cost %>
+	<div>
+		Your receipt will be emailed to <%= @transaction.email %>	
+	</div>
 
-
+	<div>
+		Your card will be charged $<%= @transaction.cost %>
+	</div>
+</div>

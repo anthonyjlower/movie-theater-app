@@ -1,0 +1,41 @@
+<h1>Dashboard</h1>
+
+<div id='dash'>
+	<div id='hero'>
+		<h2>Total Revenue</h2>
+		<h2>$<%= @total_rev %></h2>
+		<%= link_to 'Click to view all Transactions', transactions_path %>
+	</div>
+
+
+	<div class='cols'>
+		<h2>Daily Sales</h2>
+		<% @daily_sales.each_with_index do |sales, index| %>
+			<div>
+				<%=Date::DAYNAMES[index] %>: $<%= sales %>
+			</div>
+		<% end %>
+	</div>
+
+	<div class='cols'>
+		<h2>Hourly Sales</h2>
+		<% @hourly_sales.each_pair do |key, value| %>
+			<div>
+				<%= key %>: $<%= value %>
+			</div>
+		<% end %>
+	</div>
+
+
+	<div class='cols'>
+		<h2>Movie Sales</h2>
+		<p id='note'>(Select Movie Title to view transactions)</p>
+
+		<% @movie_sales.each do |movie| %>
+			<div class='movie-row'>
+				<%= link_to movie[:title], movie_path(movie[:id]) %>: $<%= movie[:sales] %>
+			</div>
+
+		<% end %>
+	</div>
+</div>

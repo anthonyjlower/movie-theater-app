@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'movies#index'
 
+  get 'transactions/dashboard', to: 'transactions#dashboard'
+
 
   resources :movies
   resources :showings

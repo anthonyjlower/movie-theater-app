@@ -1,9 +1,44 @@
 <h1><%= @movie.title %> Sales</h1>
 
-<ul>
+<div id='headings'>
+	<div class='cell'>
+		Email:
+	</div>
+	<div class='cell'>
+		Date:
+	</div>
+	<div class='cell'>
+		Time:
+	</div>
+	<div class='cell'>
+		Tickets Purchased:
+	</div>
+	<div class='cell'>
+		Subtotal:
+	</div>
+</div>
+
+<div id='data'>
 	<% @transactions.each do |transaction| %>
-		<%= transaction[:trans].first_name %>
-		<%= transaction[:showing].date %>
+	<div class='row'>
+		<div class='cell'>
+			<%= transaction[:trans].email %>
+		</div>
+		<div class='cell'>
+			<%= transaction[:showing].date %>
+		</div>
+		<div class='cell'>
+			<%= transaction[:showing].time %>
+		</div>
+		<div class='cell'>
+			<%= transaction[:trans].quantity %>
+		</div>
+		<div class='cell'>
+			$<%= transaction[:trans].cost %>
+		</div>
+
+
+	</div>
 
 	<% end %>
-</ul>
+</div>

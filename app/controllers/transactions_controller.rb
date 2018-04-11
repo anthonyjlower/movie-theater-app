@@ -33,7 +33,62 @@ class TransactionsController < ApplicationController
 	end
 
 	def index
-		@transactions = Transaction.all
+		transactions = Transaction.all
+		@all_transactions = []
+
+		transactions.each do |transaction|
+			showing = transaction.showing
+			movie = showing.movie
+
+			resp ={
+				transaction: transaction,
+				showing: showing,
+				movie: movie
+			}
+			@all_transactions.push(resp)
+		end
+		pp @all_transactions
+	end
+
+	def dashboard
+		@total_rev = 0
+		@daily_sales = [0, 0, 0, 0, 0, 0, 0]
+		@hourly_sales = {}
+		@movie_sales = []
+
+		transactions = Transaction.all
+		transactions.each do |transaction|
+			# Add the total from the transaction to total_rev
+			@total_rev += transaction.cost
+			# Find the transactions showing
+			showing = transaction.showing
+			# Add the total from the transaction to showings day of the week
+			@daily_sales[showing.date.wday] += transaction.cost
+
+			@hourly_sales.has_key?(showing.time) ? @hourly_sales[showing.time] += transaction.cost : 
+				@hourly_sales[showing.time] = transaction.cost
+
+		end
+
+
+
+		Movie.all.each do |movie|
+			movie_sales = 0
+
+			movie.transactions.each do |transaction|
+				movie_sales += transaction.cost
+			end
+			
+			movie = {
+				id: movie.id,
+				title: movie.title,
+				sales: movie_sales
+			}
+			@movie_sales.push(movie)
+
+		end
+
+
 	end
 
 end

@@ -1,13 +1,50 @@
 <h1>Transaction Log</h1>
 
+<div id='headings'>
+	<div class='cell'>
+		Movie:
+	</div>
+	<div class='cell'>
+		Email:
+	</div>
+	<div class='cell'>
+		Date:
+	</div>
+	<div class='cell'>
+		Time:
+	</div>
+	<div class='cell'>
+		Tickets Purchased:
+	</div>
+	<div class='cell'>
+		Subtotal:
+	</div>
+</div>
 
-<ul>
-	<% @transactions.each do |transaction| %>
-		<li>
-			<%= transaction.email %> <%= transaction.quantity %> 
-		</li>
+<div id='data'>
+	<% @all_transactions.each do |transaction| %>
+	<div class='row'>
+		<div class='cell'>
+			<%= transaction[:movie].title %>
+		</div>
+		<div class='cell'>
+			<%= transaction[:transaction].email %>
+		</div>
+		<div class='cell'>
+			<%= transaction[:showing].date %>
+		</div>
+		<div class='cell'>
+			<%= transaction[:showing].time %>
+		</div>
+		<div class='cell'>
+			<%= transaction[:transaction].quantity %>
+		</div>
+		<div class='cell'>
+			$<%= transaction[:transaction].cost %>
+		</div>
 
 
+	</div>
 
-	<%end %> 
-</ul>
+	<% end %>
+</div>
