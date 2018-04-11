@@ -9,9 +9,7 @@ class ShowingsController < ApplicationController
 
 		@showing.transactions.each do |transaction|
 			@tickets_sold += transaction.quantity
-
 		end
-
 	end
 
 

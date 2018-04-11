@@ -2,9 +2,8 @@ class MoviesController < ApplicationController
 	
 	def index
 		@movie_list = []
-		movies = Movie.all
 
-		movies.each do |movie|
+		Movie.all.each do |movie|
 			showings = movie.showings
 
 			screen = {movie: movie, showings: showings}
@@ -14,10 +13,9 @@ class MoviesController < ApplicationController
 
 	def show
 		@movie = Movie.find(params[:id])
-		transactions = @movie.transactions
 		@transactions = []
 
-		transactions.each do |transaction|
+		@movie.transactions.each do |transaction|
 			showing = transaction.showing
 
 			resp = {
@@ -26,7 +24,6 @@ class MoviesController < ApplicationController
 			}
 			@transactions.push(resp)
 		end
-		
 	end
 
 end
