@@ -17,6 +17,8 @@ class TransactionsController < ApplicationController
 			@transaction.showing_id = params[:id]
 			
 			if @transaction.save
+				# Send Receipt Email
+				ConfirmationMailer.with(transaction: @transaction).receipt_email.deliver_now
 				render 'show'
 			else
 				p @transaction.errors.full_messages

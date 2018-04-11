@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Thank You For Your Purchase</h1>
+
+	<p>
+		This is your receipt for your purchase of <%= @transaction.quantity %> ticket(s) to see <%= @movie.title %> on <%= @showing.date %> at <%= @showing.time %>.
+	</p>
+
+	<p>
+		<%= @transaction.quantity %> tickets x <%= @showing.price %> = <%= @transaction.cost %>
+	</p>
+
+</body>
+</html>
