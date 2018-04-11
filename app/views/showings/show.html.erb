@@ -12,7 +12,11 @@
 
 
 	
-	
+	<% flash.each do |name, msg| %>
+      <ul>
+        <li><%= msg %></li>
+      </ul>
+    <% end %>	
 
 	<%= form_for @transaction do |f| %>
 

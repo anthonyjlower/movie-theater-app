@@ -2,13 +2,19 @@ class TransactionsController < ApplicationController
 
 	def create
 
+		# Check to see if the form sent a blank expiration date
+		params[:credit_card_expiration] === "" ?
+		# If it did set the date equal to tday so it will fail the test
+		exp_date = Date.today :
+		# Other wise structure the date to test
 		exp_date = Date.strptime(params[:credit_card_expiration], '%Y-%m')
 
 		# Validate Credit Card Info
-		if exp_date > Date.today && params[:credit_card_number].length === 16
+		num_to_test = params[:credit_card_number].to_i
+		str_to_compare = num_to_test.to_s
+		if exp_date > Date.today && params[:credit_card_number].length === 16 && params[:credit_card_number] == str_to_compare
 			# Find the showing being booked
 			showing = Showing.find(params[:id])
-
 
 			@transaction = Transaction.new
 			@transaction.email = params[:transaction][:email]
@@ -23,11 +29,12 @@ class TransactionsController < ApplicationController
 				ConfirmationMailer.with(transaction: @transaction).receipt_email.deliver_later
 				render 'show'
 			else
-				p @transaction.errors.full_messages
+				flash[:notice] = "There is an error with your name or email"
 				redirect_to showing_path(params[:id])
 			end # End .save if
 
 		else
+			flash[:notice] = "There is an error with your credit card information"
 			redirect_to showing_path(params[:id])
 		end # End CC validation If
 	end # End Create route
