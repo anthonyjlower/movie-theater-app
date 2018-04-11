@@ -44,7 +44,7 @@ __5) Customer should recieve their receipt through an email__
 
 __6) Application should validate credit card information__
 
-* For now the credit card validations are simple so data flow for failed validation is in place, but fake numbers can still be used
+* For demo the credit card validations are simple so data flow for failed validation is in place, but fake numbers can still be used
 * Currently the route (transaction#create) checks that the expiration date is in the future, the credit card number has exactly 16 characters, and all of the characters are numerals - this last check is done by turning the string into an integer and back, which drops any non-numeric characters
 * Once we are ready to start taking real credit cards we will want to implement more security through encrypitng credit card numbers, and using a gem to handle the validations - [example](https://rubygems.org/gems/credit_card_validations)
 
@@ -73,9 +73,10 @@ __10) Owner wants to be able to view a list of all orders for specific movies__
 
 
 ## Next Steps and Future Plans
-1. Add gem for improved Credit Card Validation
-2. Refactor code so models contain methods that complete some of the route functionality to increase modularity and DRY-ness
-3. Change front-end to be SPA (react.js)
+1. Change the static dates on homepage (movies#index) to be dynamic - shown in the [dynamic dates branch](https://github.com/anthonyjlower/movie-theater-app/tree/dynamic-dates)
+2. Add gem for improved Credit Card Validation
+3. Refactor code so models contain methods that complete some of the route functionality to increase modularity and DRY-ness
+4. Change front-end to be SPA (react.js)
 
 
 
