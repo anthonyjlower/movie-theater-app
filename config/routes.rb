@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   get 'transactions/dashboard', to: 'transactions#dashboard'
 
-
   resources :movies
   resources :showings
   resources :transactions

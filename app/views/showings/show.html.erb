@@ -34,18 +34,15 @@
 	</p>
 	<p>
 		<%= f.label :quantity %>
-		<%= select_tag :quantity, options_for_select([*1..@showing.capacity - @tickets_sold], 1)%>
+		<%= f.select :quantity, options_for_select([*1..@showing.capacity - @tickets_sold], 1)%>
 		$<%= @showing.price %>/ticket
-	</p>
 	<p>
 		Credit Card Number <input type="text" name="credit_card_number">
 	</p>
 	<p>
 		Credit Card Expiration <input min=<%= Date.today %> type="month" name="credit_card_expiration">
 	</p>
-	<input type="hidden" name="id" value=<%= @showing.id %>>
-
-
+	<%= f.hidden_field :showing_id, :value => @showing.id %>
 	<p>
 		<%=f.submit%>
 	</p>

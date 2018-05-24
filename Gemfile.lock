@@ -62,6 +62,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    credit_card_validations (3.5.0)
+      activemodel (>= 3, <= 6)
+      activesupport (>= 3, <= 6)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -178,6 +181,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  credit_card_validations
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
@@ -193,4 +197,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

@@ -1,43 +1,21 @@
 class TransactionsController < ApplicationController
 
 	def create
-
-		# Check to see if the form sent a blank expiration date
-		params[:credit_card_expiration] === "" ?
-		# If it did set the date equal to tday so it will fail the test
-		exp_date = Date.today :
-		# Other wise structure the date to test
-		exp_date = Date.strptime(params[:credit_card_expiration], '%Y-%m')
-
-		# Validate Credit Card Info
-		num_to_test = params[:credit_card_number].to_i
-		str_to_compare = num_to_test.to_s
-		if exp_date > Date.today && params[:credit_card_number].length === 16 && params[:credit_card_number] == str_to_compare
-			# Find the showing being booked
-			showing = Showing.find(params[:id])
-
-			@transaction = Transaction.new
-			@transaction.email = params[:transaction][:email]
-			@transaction.first_name = params[:transaction][:first_name]
-			@transaction.last_name = params[:transaction][:last_name]
-			@transaction.quantity = params[:quantity]
-			@transaction.cost = @transaction.quantity * showing.price
-			@transaction.showing_id = params[:id]
-			
+		if Transaction.active_card(params[:credit_card_expiration], params[:credit_card_number])
+			@transaction = Transaction.new(transaction_params)
+			@transaction.cost = @transaction.quantity * @transaction.showing.price
 			if @transaction.save
-				# Send Receipt Email
 				ConfirmationMailer.with(transaction: @transaction).receipt_email.deliver_later
 				render 'show'
 			else
 				flash[:notice] = "There is an error with your name or email"
-				redirect_to showing_path(params[:id])
-			end # End .save if
-
+				redirect_to showing_path(params[:transaction][:showing_id])
+			end 
 		else
 			flash[:notice] = "There is an error with your credit card information"
-			redirect_to showing_path(params[:id])
-		end # End CC validation If
-	end # End Create route
+			redirect_to showing_path(params[:transaction][:showing_id])
+		end
+	end
 
 	def show
 		@transaction = Transaction.find(params[:id])
@@ -57,7 +35,6 @@ class TransactionsController < ApplicationController
 			}
 			@all_transactions.push(resp)
 		end
-
 	end
 
 	def dashboard
@@ -98,5 +75,12 @@ class TransactionsController < ApplicationController
 		end #End Movie.all.each loop
 
 	end #End Dashboard Route
+
+
+	private
+
+	def transaction_params
+		params.require(:transaction).permit(:email, :first_name, :last_name, :showing_id, :quantity)
+	end
 
 end
