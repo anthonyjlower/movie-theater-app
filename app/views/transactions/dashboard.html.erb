@@ -10,9 +10,9 @@
 
 	<div class='cols'>
 		<h2>Daily Sales</h2>
-		<% @daily_sales.each_with_index do |sales, index| %>
+		<% @daily_sales.each_pair do |key, value| %>
 			<div>
-				<%=Date::DAYNAMES[index] %>: $<%= sales %>
+				<%= key %>: $<%= value %>
 			</div>
 		<% end %>
 	</div>
@@ -31,9 +31,9 @@
 		<h2>Movie Sales</h2>
 		<p id='note'>(Select Movie Title to view transactions)</p>
 
-		<% @movie_sales.each do |movie| %>
+		<% @movie_sales.each_pair do |key, value| %>
 			<div class='movie-row'>
-				<%= link_to movie[:title], movie_path(movie[:id]) %>: $<%= movie[:sales] %>
+				<%= link_to key, movie_path(value[:id]) %>: $<%= value[:sales] %>
 			</div>
 
 		<% end %>

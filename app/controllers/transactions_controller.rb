@@ -2,15 +2,18 @@ class TransactionsController < ApplicationController
 
 	def create
 		if Transaction.active_card(params[:credit_card_expiration], params[:credit_card_number])
+			
 			@transaction = Transaction.new(transaction_params)
 			@transaction.cost = @transaction.quantity * @transaction.showing.price
+
 			if @transaction.save
 				ConfirmationMailer.with(transaction: @transaction).receipt_email.deliver_later
 				render 'show'
 			else
 				flash[:notice] = "There is an error with your name or email"
 				redirect_to showing_path(params[:transaction][:showing_id])
-			end 
+			end
+
 		else
 			flash[:notice] = "There is an error with your credit card information"
 			redirect_to showing_path(params[:transaction][:showing_id])
@@ -24,7 +27,7 @@ class TransactionsController < ApplicationController
 	def index
 		@all_transactions = []
 
-		Transaction.all.each do |transaction|
+		Transaction.all.find_each do |transaction|
 			showing = transaction.showing
 			movie = showing.movie
 
@@ -38,43 +41,15 @@ class TransactionsController < ApplicationController
 	end
 
 	def dashboard
-		@total_rev = 0
-		@daily_sales = [0, 0, 0, 0, 0, 0, 0]
-		@hourly_sales = {}
-		@movie_sales = []
 
-		Transaction.all.each do |transaction|
-			# Add the total from the transaction to total_rev
-			@total_rev += transaction.cost
-			# Find the showing the transaction belongs to
-			showing = transaction.showing
-			# Add the total from the transaction to showings day of the week
-			@daily_sales[showing.date.wday] += transaction.cost
+		dash_services = DashboardService
 
-			# Check to see if the show time has been see already - if so add the transaction cost to the total
-			@hourly_sales.has_key?(showing.time) ? @hourly_sales[showing.time] += transaction.cost : 
-				# Otherwise set the total equal to the transaction cost
-				@hourly_sales[showing.time] = transaction.cost
-		end #End Transaction.all.each loop
+		@total_rev = dash_services.total_rev
+		@daily_sales = dash_services.daily_sales
+		@hourly_sales = dash_services.hourly_sales
+		@movie_sales = dash_services.movie_sales
 
-		# Find each movies total revenue
-		Movie.all.each do |movie|
-			movie_sales = 0
-
-			# Loop through all of the transactions for each movie
-			movie.transactions.each do |transaction|
-				movie_sales += transaction.cost
-			end
-			
-			movie = {
-				id: movie.id,
-				title: movie.title,
-				sales: movie_sales
-			}
-			@movie_sales.push(movie)
-		end #End Movie.all.each loop
-
-	end #End Dashboard Route
+	end
 
 
 	private

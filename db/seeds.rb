@@ -107,3 +107,27 @@ Showing.create(movie_id: 3, capacity: 50, date: '2018-04-17', time: '05:30 PM', 
 Showing.create(movie_id: 3, capacity: 50, date: '2018-04-17', time: '08:00 PM', price: 15.50)
 Showing.create(movie_id: 3, capacity: 50, date: '2018-04-17', time: '10:30 PM', price: 12.00)
 
+
+
+Transaction.create(showing_id: 1, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 1, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 1, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 2, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 3, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 4, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 4, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 4, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 4, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 10, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 10, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 11, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 11, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 11, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 1, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 1, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 1, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 1, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 1, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 20, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+Transaction.create(showing_id: 20, quantity: 1, email: "test@example.com", first_name: "Foo", last_name: "Bar", cost: 10.0)
+
