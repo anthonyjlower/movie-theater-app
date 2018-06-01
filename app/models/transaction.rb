@@ -5,10 +5,16 @@ class Transaction < ActiveRecord::Base
 	belongs_to :showing
 
 	def self.active_card(exp_date, cc_number)
-		exp_date != '' && 
+		exp_date != '' &&
 		Date.strptime(exp_date, '%Y-%m') > Date.today &&
 		CreditCardValidations::Luhn.valid?(cc_number) &&
 		CreditCardValidations::Detector.new(cc_number).valid?
+	end
+
+	def send_receipt
+		p '------self---------'
+		p self
+		ConfirmationMailer.with(transaction: self).receipt_email.deliver_later
 	end
 
 end
