@@ -23,14 +23,14 @@
 
 <div class='movie'>
 	<% @movie_list.each do |movie| %>
-		
+
 		<div class='title'>
 			<h2><%= movie[:movie].title %></h2>
 		</div>
 
 		<div class='showings'>
 			<% movie[:showings].each do |showing| %>
-				
+
 				<span class=<%= showing.date %>>
 					<%= link_to showing.time, showing %>
 				</span>

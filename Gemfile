@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'rubocop', '~> 0.57.1', require: false
+gem 'bullet', group: 'development'
 
 gem 'credit_card_validations'
 

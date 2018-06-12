@@ -2,10 +2,9 @@ class TransactionsController < ApplicationController
 
 	def create
 		if Transaction.active_card(params[:credit_card_expiration], params[:credit_card_number])
-			transaction_service = TransactionService.new(transaction_params)
-			@transaction = transaction_service.create
+			@transaction = TransactionCreateService.new(transaction_params).create
 			if @transaction
-				@transaction.send_receipt
+				ConfirmationMailerService.new.send_receipt(@transaction)
 				render 'show'
 			else
 				flash[:notice] = "There is an error with your name or email"
@@ -23,23 +22,11 @@ class TransactionsController < ApplicationController
 	end
 
 	def index
-		@all_transactions = []
-
-		Transaction.all.find_each do |transaction|
-			showing = transaction.showing
-			movie = showing.movie
-
-			resp ={
-				transaction: transaction,
-				showing: showing,
-				movie: movie
-			}
-			@all_transactions.push(resp)
-		end
+		@all_transactions = TransactionService.new.get_all_transactions
 	end
 
 	def dashboard
-		dash_services = DashboardService
+		dash_services = DashboardService.new
 		@total_rev = dash_services.total_rev
 		@daily_sales = dash_services.daily_sales
 		@hourly_sales = dash_services.hourly_sales
@@ -52,5 +39,4 @@ class TransactionsController < ApplicationController
 	def transaction_params
 		params.require(:transaction).permit(:email, :first_name, :last_name, :showing_id, :quantity)
 	end
-
 end
