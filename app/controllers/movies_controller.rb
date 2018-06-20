@@ -2,18 +2,16 @@ class MoviesController < ApplicationController
 
 	def index
 		@movie_list = Movie.all.includes(:showings).map do |movie|
-			showings = movie.showings
-			screen = {movie: movie, showings: showings}
+			screen = {movie: movie, showings: movie.showings}
 		end
 	end
 
 	def show
 		@movie = Movie.find(params[:id])
-		@transactions = @movie.transactions.map do |transaction|
-			showing = transaction.showing
+		@transactions = @movie.transactions.includes(:showing).map do |transaction|
 			resp = {
 				trans: transaction,
-				showing: showing
+				showing: transaction.showing
 			}
 		end
 	end

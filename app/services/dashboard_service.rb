@@ -35,12 +35,15 @@ class DashboardService
 
 		private
 
-		def get_weekday date
+		def get_weekday(date)
 			Date::DAYNAMES[date]
 		end
 
-		def calculate hash_obj, key, sum
-			hash_obj[key] += sum unless hash_obj[key].nil?
-			hash_obj[key] = sum if hash_obj[key].nil?
+		def calculate(hash_obj, key, sum)
+			if hash_obj[key].nil?
+				hash_obj[key] = sum
+			else
+				hash_obj[key] += sum
+			end
 		end
 end

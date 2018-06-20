@@ -1,5 +1,5 @@
 class Transaction < ActiveRecord::Base
-	validates_presence_of :showing_id, :quantity, :cost
+	validates_presence_of :quantity, :cost
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255}, format: { with: VALID_EMAIL_REGEX }
 	validates :first_name, presence: true, length: { maximum: 50}

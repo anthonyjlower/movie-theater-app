@@ -10,7 +10,6 @@ class TransactionsController < ApplicationController
 				flash[:notice] = "There is an error with your name or email"
 				redirect_to showing_path(params[:id])
 			end
-
 		else
 			flash[:notice] = "There is an error with your credit card information"
 			redirect_to showing_path(params[:transaction][:showing_id])
@@ -22,7 +21,13 @@ class TransactionsController < ApplicationController
 	end
 
 	def index
-		@all_transactions = TransactionService.new.get_all_transactions
+		@all_transactions = Transaction.all.includes(:showing, showing: [:movie]).map do |transaction|
+			resp ={
+				transaction: transaction,
+				showing: transaction.showing,
+				movie: showing.movie
+			}
+		end
 	end
 
 	def dashboard
@@ -32,7 +37,6 @@ class TransactionsController < ApplicationController
 		@hourly_sales = dash_services.hourly_sales
 		@movie_sales = dash_services.movie_sales
 	end
-
 
 	private
 
