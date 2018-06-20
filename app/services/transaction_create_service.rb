@@ -23,7 +23,6 @@ class TransactionCreateService
   private
 
   def calc_cost
-    showing = Showing.find(showing_id)
-    showing.price * BigDecimal(quantity)
+    Showing.find(showing_id).price * BigDecimal(quantity)
   end
 end

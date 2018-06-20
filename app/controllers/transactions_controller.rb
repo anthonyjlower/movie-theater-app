@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
 		if Transaction.active_card(params[:credit_card_expiration], params[:credit_card_number])
 			@transaction = TransactionCreateService.new(transaction_params).create
 			if @transaction
-				ConfirmationMailerService.new.send_receipt(@transaction)
+				ConfirmationMailer.with(transaction: transaction).receipt_email.deliver_now
 				render 'show'
 			else
 				flash[:notice] = "There is an error with your name or email"
@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
 			resp ={
 				transaction: transaction,
 				showing: transaction.showing,
-				movie: showing.movie
+				movie: transaction.showing.movie
 			}
 		end
 	end
