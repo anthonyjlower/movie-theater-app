@@ -6,4 +6,8 @@ module ApplicationHelper
   def format_date(val)
     val.strftime('%-m/%-d/%Y').to_s
   end
+
+  def format_showing_date(val)
+    val.strftime('%A, %B %e')
+  end
 end

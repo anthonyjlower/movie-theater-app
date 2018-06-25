@@ -1,8 +1,8 @@
 <h1><%= @movie.title %></h1>
 
-<h4>Date: <%= @showing.date %> <%= @showing.time %></h4>
+<h4><%= format_showing_date(@showing.date) %> <%= @showing.time %></h4>
 
-<% if @showing.capacity - @tickets_sold === 0 %>
+<% if @showing.capacity - @tickets_sold <= 0 %>
 
 	<div id='sold-out'>Sold Out!</div>
 

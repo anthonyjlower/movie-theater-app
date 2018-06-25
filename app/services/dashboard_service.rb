@@ -6,7 +6,7 @@ class DashboardService
 	end
 
 	def total_rev
-		@transactions.each.pluck(:cost).sum
+		@transactions.sum(:cost)
 	end
 
 	def daily_sales
