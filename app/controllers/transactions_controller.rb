@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
 		if Transaction.active_card(params[:credit_card_expiration], params[:credit_card_number])
 			@transaction = TransactionCreateService.new(transaction_params).create
 			if @transaction
-				ConfirmationMailer.with(transaction: transaction).receipt_email.deliver_now
+				ConfirmationMailer.with(transaction: @transaction).receipt_email.deliver_now
 				render 'show'
 			else
 				flash[:notice] = "There is an error with your name or email"
@@ -22,8 +22,8 @@ class TransactionsController < ApplicationController
 	end
 
 	def index
-		@all_transactions = Transaction.all.includes(:showing, showing: [:movie]).map do |transaction|
-			resp ={
+		@all_transactions = Transaction.all.includes(showing: :movie).map do |transaction|
+			{
 				transaction: transaction,
 				showing: transaction.showing,
 				movie: transaction.showing.movie

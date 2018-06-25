@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 	def show
 		@movie = Movie.find(params[:id])
 		@transactions = @movie.transactions.includes(:showing).map do |transaction|
-			resp = {
+			{
 				trans: transaction,
 				showing: transaction.showing
 			}
