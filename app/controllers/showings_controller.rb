@@ -5,6 +5,6 @@ class ShowingsController < ApplicationController
 		@showing = Showing.find(params[:id])
 		@movie = Movie.find_by(id: @showing.movie_id)
 		@transaction = Transaction.new
-		@tickets_sold = @showing.transactions.pluck(:quantity).sum
+		@tickets_sold = @showing.transactions.sum(:quantity)
 	end
 end
