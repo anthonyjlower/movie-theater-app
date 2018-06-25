@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+	include ApplicationHelper
 
 	def create
 		if Transaction.active_card(params[:credit_card_expiration], params[:credit_card_number])

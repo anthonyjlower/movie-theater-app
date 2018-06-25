@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+	include ApplicationHelper
 
 	def index
 		@movie_list = Movie.all.includes(:showings).map do |movie|

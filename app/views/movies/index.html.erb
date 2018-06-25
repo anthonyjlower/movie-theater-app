@@ -2,22 +2,22 @@
 
 <nav>
 	<div class='date'>
-		2018-04-12
+		<%= format_date(Date.new(2018, 4, 12)) %>
 	</div>
 	<div class='date'>
-		2018-04-13
+		<%= format_date(Date.new(2018, 4, 13)) %>
 	</div>
 	<div class='date'>
-		2018-04-14
+		<%= format_date(Date.new(2018, 4, 14)) %>
 	</div>
 	<div class='date'>
-		2018-04-15
+		<%= format_date(Date.new(2018, 4, 15)) %>
 	</div>
 	<div class='date'>
-		2018-04-16
+		<%= format_date(Date.new(2018, 4, 16)) %>
 	</div>
 	<div class='date'>
-		2018-04-17
+		<%= format_date(Date.new(2018, 4, 17)) %>
 	</div>
 </nav>
 
@@ -30,15 +30,10 @@
 
 		<div class='showings'>
 			<% movie[:showings].each do |showing| %>
-
-				<span class=<%= showing.date %>>
+				<span class=<%= format_date(showing.date) %>>
 					<%= link_to showing.time, showing %>
 				</span>
-
 			<% end %>
 		</div>
-
-
-
 	<% end %>
 </div>

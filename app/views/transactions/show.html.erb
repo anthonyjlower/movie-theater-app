@@ -6,10 +6,10 @@
 	</div>
 
 	<div>
-		Your receipt will be emailed to <%= @transaction.email %>	
+		Your receipt will be emailed to <%= @transaction.email %>
 	</div>
 
 	<div>
-		Your card will be charged $<%= @transaction.cost %>
+		Your card will be charged <%= format_dollar(@transaction.cost) %>
 	</div>
 </div>

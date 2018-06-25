@@ -11,12 +11,12 @@
 	<h3>Tickets Remaining: <%= @showing.capacity - @tickets_sold%></h3>
 
 
-	
+
 	<% flash.each do |name, msg| %>
       <ul>
         <li><%= msg %></li>
       </ul>
-    <% end %>	
+    <% end %>
 
 	<%= form_for @transaction do |f| %>
 
@@ -35,7 +35,7 @@
 	<p>
 		<%= f.label :quantity %>
 		<%= f.select :quantity, options_for_select([*1..@showing.capacity - @tickets_sold], 1)%>
-		$<%= @showing.price %>/ticket
+		<%= format_dollar(@showing.price) %>/ticket
 	<p>
 		Credit Card Number <input type="text" name="credit_card_number">
 	</p>

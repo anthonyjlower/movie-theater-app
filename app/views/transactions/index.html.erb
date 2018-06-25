@@ -40,7 +40,7 @@
 			<%= transaction[:transaction].quantity %>
 		</div>
 		<div class='cell'>
-			$<%= transaction[:transaction].cost %>
+			<%= format_dollar(transaction[:transaction].cost) %>
 		</div>
 
 

@@ -1,4 +1,5 @@
 class ShowingsController < ApplicationController
+  include ApplicationHelper
 
 	def show
 		@showing = Showing.find(params[:id])

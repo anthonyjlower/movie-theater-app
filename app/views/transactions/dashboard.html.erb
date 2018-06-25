@@ -3,7 +3,7 @@
 <div id='dash'>
 	<div id='hero'>
 		<h2>Total Revenue</h2>
-		<h2>$<%= @total_rev %></h2>
+		<h2><%= format_dollar(@total_rev) %></h2>
 		<%= link_to 'Click to view all Transactions', transactions_path %>
 	</div>
 
@@ -12,7 +12,7 @@
 		<h2>Daily Sales</h2>
 		<% @daily_sales.each_pair do |key, value| %>
 			<div>
-				<%= key %>: $<%= value %>
+				<%= key %>: <%= format_dollar(value) %>
 			</div>
 		<% end %>
 	</div>
@@ -21,7 +21,7 @@
 		<h2>Hourly Sales</h2>
 		<% @hourly_sales.each_pair do |key, value| %>
 			<div>
-				<%= key %>: $<%= value %>
+				<%= key %>: <%= format_dollar(value) %>
 			</div>
 		<% end %>
 	</div>
@@ -33,7 +33,7 @@
 
 		<% @movie_sales.each_pair do |key, value| %>
 			<div class='movie-row'>
-				<%= link_to key, movie_path(value[:id]) %>: $<%= value[:sales] %>
+				<%= link_to key, movie_path(value[:id]) %>: <%= format_dollar(value[:sales]) %>
 			</div>
 
 		<% end %>

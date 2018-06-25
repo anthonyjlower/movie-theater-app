@@ -35,8 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'rubocop', '~> 0.57.1', require: false
-gem 'bullet', group: 'development'
+
 
 gem 'credit_card_validations'
 
@@ -60,6 +59,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop', '~> 0.57.1', require: false
+  gem 'bullet', group: 'development'
 end
 
 group :test do
