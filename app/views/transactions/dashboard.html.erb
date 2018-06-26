@@ -12,7 +12,7 @@
 		<h2>Daily Sales</h2>
 		<% @daily_sales.each_pair do |key, value| %>
 			<div>
-				<%= key %>: <%= format_dollar(value) %>
+				<%= key %>: <%= format_dollar(value[:sales]) %>
 			</div>
 		<% end %>
 	</div>
@@ -21,7 +21,7 @@
 		<h2>Hourly Sales</h2>
 		<% @hourly_sales.each_pair do |key, value| %>
 			<div>
-				<%= key %>: <%= format_dollar(value) %>
+				<%= key %>: <%= format_dollar(value[:sales]) %>
 			</div>
 		<% end %>
 	</div>

@@ -2,7 +2,7 @@ class DashboardService
 	attr_reader :transactions
 
 	def initialize
-		@transactions = Transaction.includes(:showing).all
+		@transactions = Transaction.includes(showing: :movie).all
 	end
 
 	def total_rev
@@ -10,33 +10,24 @@ class DashboardService
 	end
 
 	def daily_sales
-		daily_sales = {}
-		@transactions.each do |trans|
-			date = get_weekday(trans.showing.date.wday)
-			calculate(daily_sales, date, trans.cost)
+		sales = @transactions.group_by do |t|
+			get_weekday(t.showing.date.wday)
 		end
-		daily_sales
+		calculate(sales)
 	end
 
 	def hourly_sales
-		hourly_sales = {}
-		@transactions.each do |trans|
-			time = trans.showing.time
-			calculate(hourly_sales, time, trans.cost)
+		sales = @transactions.group_by do |t|
+			t.showing.time
 		end
-		hourly_sales
+		calculate(sales)
 	end
 
 	def movie_sales
-		movie_sales = {}
-		Movie.find_each do |movie|
-			movie_sales[movie.title] = {
-				id: movie.id,
-				title: movie.title,
-				sales: movie.transactions.pluck(:cost).sum
-			}
+		sales = @transactions.group_by do |t|
+			t.showing.movie.title
 		end
-		movie_sales
+		calculate(sales)
 	end
 
 	private
@@ -45,11 +36,12 @@ class DashboardService
 		Date::DAYNAMES[date]
 	end
 
-	def calculate(hash_obj, key, sum)
-		if hash_obj[key].nil?
-			hash_obj[key] = sum
-		else
-			hash_obj[key] += sum
+	def calculate(hash_obj)
+		hash_obj.each_pair do |key, value|
+			hash_obj[key] = {
+				sales: value.pluck(:cost).sum,
+				id: value[0].showing.movie.id
+			}
 		end
 	end
 end
