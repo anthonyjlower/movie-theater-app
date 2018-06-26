@@ -17,6 +17,11 @@ RSpec.describe DashboardService, type: :service do
         keys = transactions.map { |t| Date::DAYNAMES[t.showing.date.wday]}.uniq
         expect(subject.daily_sales.keys).to eq(keys)
       end
+
+      it 'should have values equalling total sales' do
+        sum = transactions.map { |t| t.cost }.sum
+        expect(subject.daily_sales.values.sum).to eq(sum)
+      end
     end
 
     describe 'hourly_sales' do
@@ -24,12 +29,22 @@ RSpec.describe DashboardService, type: :service do
         keys = transactions.map { |t| t.showing.time }.uniq
         expect(subject.hourly_sales.keys).to eq(keys)
       end
+
+       it 'should have values equalling total sales' do
+        sum = transactions.map { |t| t.cost }.sum
+        expect(subject.daily_sales.values.sum).to eq(sum)
+      end
     end
 
     describe 'movie_sales' do
       it 'should have keys corresponding to movies' do
         keys = transactions.map { |t| t.showing.movie.title }.uniq
         expect(subject.movie_sales.keys).to eq(keys)
+      end
+
+       it 'should have values equalling total sales' do
+        sum = transactions.map { |t| t.cost }.sum
+        expect(subject.daily_sales.values.sum).to eq(sum)
       end
     end
   end

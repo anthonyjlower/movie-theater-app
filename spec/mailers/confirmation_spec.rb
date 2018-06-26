@@ -22,7 +22,7 @@ RSpec.describe ConfirmationMailer, type: :mailer do
     end
 
     it 'has the correct movie title' do
-      expect(subject.body.encoded).to match(transaction.showing.movie.title)
+      expect(CGI.unescapeHTML(subject.body.encoded)).to match(transaction.showing.movie.title)
     end
 
     it 'has the correct showing data' do
