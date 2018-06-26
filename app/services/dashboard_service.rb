@@ -2,7 +2,7 @@ class DashboardService
 	attr_reader :transactions
 
 	def initialize
-		@transactions = Transaction.all.includes(:showing)
+		@transactions = Transaction.includes(:showing).all
 	end
 
 	def total_rev
@@ -29,7 +29,7 @@ class DashboardService
 
 	def movie_sales
 		movie_sales = {}
-		Movie.all.find_each do |movie|
+		Movie.find_each do |movie|
 			movie_sales[movie.title] = {
 				id: movie.id,
 				title: movie.title,

@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
 	include ApplicationHelper
 
 	def index
-		@movie_list = Movie.active_movie(Date.new(2018, 4 ,12), Date.new(2018, 4, 17)).includes(:showings).uniq.map do |movie|
+		@movie_list = Movie.includes(:showings).active_movie(Date.new(2018, 4 ,12), Date.new(2018, 4, 17)).uniq.map do |movie|
 			{
 				movie: movie,
 				showings: movie.showings

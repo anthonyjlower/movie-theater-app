@@ -22,7 +22,7 @@ class TransactionsController < ApplicationController
 	end
 
 	def index
-		@all_transactions = Transaction.all.includes(showing: :movie).map do |transaction|
+		@all_transactions = Transaction.includes(showing: :movie).all.map do |transaction|
 			{
 				transaction: transaction,
 				showing: transaction.showing,
