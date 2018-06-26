@@ -10,8 +10,9 @@ function selectDate(e) {
 	const day = e.currentTarget.innerText
 	const span = document.getElementsByTagName('span')
 	const active = document.getElementsByClassName(day)
-	
-	
+	console.log(day)
+
+
 	for (let i = 0; i < span.length; i++) {
 		span[i].style.display = 'none'
 	}

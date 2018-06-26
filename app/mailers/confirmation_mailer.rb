@@ -7,7 +7,5 @@ class ConfirmationMailer < ActionMailer::Base
 		@movie = @showing.movie
 
 		mail(to: @transaction.email, subject: 'Your Purchase Receipt')
-
 	end
-
 end

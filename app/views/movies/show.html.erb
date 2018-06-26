@@ -1,5 +1,6 @@
 <h1><%= @movie.title %> Sales</h1>
 
+
 <div id='headings'>
 	<div class='cell'>
 		Email:
@@ -34,7 +35,7 @@
 			<%= transaction[:trans].quantity %>
 		</div>
 		<div class='cell'>
-			$<%= transaction[:trans].cost %>
+			<%= format_dollar(transaction[:trans].cost) %>
 		</div>
 
 
