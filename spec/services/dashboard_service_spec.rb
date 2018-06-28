@@ -20,7 +20,7 @@ RSpec.describe DashboardService, type: :service do
 
       it 'should have values equalling total sales' do
         sum = transactions.map { |t| t.cost }.sum
-        expect(subject.daily_sales.values.sum).to eq(sum)
+        expect(subject.daily_sales.values.pluck(:sales).sum).to eq(sum)
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe DashboardService, type: :service do
 
        it 'should have values equalling total sales' do
         sum = transactions.map { |t| t.cost }.sum
-        expect(subject.daily_sales.values.sum).to eq(sum)
+        expect(subject.daily_sales.values.pluck(:sales).sum).to eq(sum)
       end
     end
 
@@ -44,7 +44,7 @@ RSpec.describe DashboardService, type: :service do
 
        it 'should have values equalling total sales' do
         sum = transactions.map { |t| t.cost }.sum
-        expect(subject.daily_sales.values.sum).to eq(sum)
+        expect(subject.daily_sales.values.pluck(:sales).sum).to eq(sum)
       end
     end
   end
