@@ -28,6 +28,8 @@ module MovieApp
         g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
+    config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews"
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 

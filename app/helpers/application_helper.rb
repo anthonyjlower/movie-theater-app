@@ -4,10 +4,12 @@ module ApplicationHelper
   end
 
   def format_date(val)
+    return unless val
     val.strftime('%-m/%-d/%Y').to_s
   end
 
   def format_showing_date(val)
+    return unless val
     val.strftime('%A, %B %e')
   end
 end
