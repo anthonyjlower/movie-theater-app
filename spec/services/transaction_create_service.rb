@@ -6,7 +6,7 @@ RSpec.describe TransactionCreateService, type: :service do
 
   describe 'create' do
     it 'creates transactions correctly' do
-      expect { subject.create }.to change { Transaction.all.count }.by(1)
+      expect { subject.create }.to change { Transaction.count }.by(1)
     end
   end
 end
